@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  app:
+    image: apk_alex_back
+    container_name: apk_alex_back
+    restart: always
+    ports:
+      - 5967:8000
