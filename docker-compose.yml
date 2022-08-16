@@ -5,4 +5,4 @@ services:
     container_name: alekseevski
     restart: always
     ports:
-      - 5999:8000
+      - "5999:8000"
