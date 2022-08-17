@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
 
-    'apps.api',
+    'apps.news',
 ]
 
 MIDDLEWARE = [
@@ -123,16 +123,20 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
-USE_TZ = True
+DATETIME_FORMAT = '%d-%m-%Y %H:%M:%S'
+USE_L10N = False
+USE_TZ = False # if you plan to disable timezone support
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [STATIC_DIR]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "template_static"),
+]
 
 
 MEDIA_URL = '/media/'
@@ -145,7 +149,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PARSER_CLASSES': [
-        'rest_framework.parsers.JSONParser',
-    ]
+    'DATE_INPUT_FORMATS': ["%d-%m-%Y"],
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    )
 }
