@@ -1,14 +1,11 @@
-from rest_framework import generics
-from .models import News
+from rest_framework import viewsets
+from .permissions import IsAdminOrReadOnly
 from .serializers import NewsSerializer
+from .models import News
 
 
-class NewsList(generics.ListCreateAPIView):
+class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
-    # lookup_field = 'slug'
-
-
-class NewsDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = News.objects.all()
-    serializer_class = NewsSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+    lookup_field = 'slug'
