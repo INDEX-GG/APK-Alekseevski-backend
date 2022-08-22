@@ -3,7 +3,7 @@ from pytils.translit import slugify
 
 
 class Category(models.Model):
-    title = models.CharField('category', max_length=255, blank=False)
+    title = models.CharField('title', max_length=255, blank=False)
     slug = models.SlugField('slug', max_length=255, blank=True, null=True, unique=True)
     publish = models.BooleanField('publish', default=True)
 
@@ -13,6 +13,9 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Category, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return f'/{self.slug}/'
 
     class Meta:
         verbose_name = 'Категория'
@@ -34,6 +37,9 @@ class Products(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Products, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return f'/{self.category.slug}/{self.slug}/'
 
     class Meta:
         verbose_name = 'Продукт'

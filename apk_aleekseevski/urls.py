@@ -12,7 +12,7 @@ router = DefaultRouter()
 router.register(r'news', NewsViewSet)   # http://127.0.0.1:8000/api/v1/news/
 
 router.register(r'products', ProductsViewSet)   # http://127.0.0.1:8000/api/v1/products/
-router.register(r'category', CategoryViewSet)   # http://127.0.0.1:8000/api/v1/category/
+router.register(r'categories', CategoryViewSet)   # http://127.0.0.1:8000/api/v1/category/
 
 
 urlpatterns = [

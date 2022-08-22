@@ -19,7 +19,14 @@ class ProductsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminOrReadOnly,)
     lookup_field = 'slug'
 
-    @action(methods=['get'], detail=False)
-    def category(self, request):
-        category = Category.objects.all()
-        return Response({'category': [c.title for c in category]})
+    def get_queryset(self):
+        queryset = Products.objects.all()
+        category = self.request.query_params.get('category')
+        if category is not None:
+            queryset = queryset.filter(category=category)
+        return queryset
+
+    # @action(methods=['get'], detail=False)
+    # def category(self, request):
+    #     category = Category.objects.all()
+    #     return Response({'category': [c.title for c in category]})

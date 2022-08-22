@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     # apps
     'apps.news.apps.NewsConfig',
     'apps.catalog.apps.CatalogConfig',
-    # 'apps.customer.apps.CustomerConfig',
+    'apps.customers.apps.CustomersConfig',
 ]
 
 MIDDLEWARE = [
