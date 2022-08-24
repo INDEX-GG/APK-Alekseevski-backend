@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import News
-from django.utils.text import slugify
 
 
 class NewsSerializer(serializers.ModelSerializer):

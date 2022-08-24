@@ -14,9 +14,6 @@ class Category(models.Model):
         self.slug = slugify(self.title)
         super(Category, self).save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        return f'/{self.slug}/'
-
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
@@ -37,9 +34,6 @@ class Products(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Products, self).save(*args, **kwargs)
-
-    def get_absolute_url(self):
-        return f'/{self.category.slug}/{self.slug}/'
 
     class Meta:
         verbose_name = 'Продукт'

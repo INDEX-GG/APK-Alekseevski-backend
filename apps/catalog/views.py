@@ -1,9 +1,9 @@
-from rest_framework import viewsets
-from rest_framework.decorators import action
-from .models import *
+from rest_framework import viewsets, generics
+from rest_framework import status
 from .permissions import IsAdminOrReadOnly
 from .serializers import *
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -26,7 +26,37 @@ class ProductsViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(category=category)
         return queryset
 
-    # @action(methods=['get'], detail=False)
-    # def category(self, request):
-    #     category = Category.objects.all()
-    #     return Response({'category': [c.title for c in category]})
+
+class CatalogAPIView(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class CatalogCategoryAPIView(APIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+    def get(self, requests, slug):
+        try:
+            current_category = Category.objects.get(slug=slug)
+            products = current_category.category_products.all()
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = ProductsSerializer(products, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ProductAPIView(APIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+    def get(self, requests, slug, slug_p):
+        try:
+            current_category = Category.objects.get(slug=slug)
+            product = current_category.category_products.filter(slug=slug_p)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = ProductsSerializer(product, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

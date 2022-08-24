@@ -4,7 +4,7 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 from pathlib import Path
 
-dotenv_path = join(dirname(__file__), '.env')
+dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'apps.news.apps.NewsConfig',
     'apps.catalog.apps.CatalogConfig',
     'apps.customers.apps.CustomersConfig',
+    'apps.bidding.apps.BiddingConfig',
+    'apps.purchase.apps.PurchaseConfig',
 ]
 
 MIDDLEWARE = [
@@ -74,7 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'apk_aleekseevski.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -106,25 +107,25 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-# TODO fix it
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
-DATE_INPUT_FORMATS = ['%d-%m-%Y']
+USE_I18N = True
 
-DATETIME_FORMAT = '%d-%m-%Y %H:%M:%S'
-USE_L10N = False
-USE_TZ = False  # if you plan to disable timezone support
+USE_L10N = True
+
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "template_static"),
-]
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "template_static"),
+# ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -182,6 +183,6 @@ SIMPLE_JWT = {
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
-       'https://192.168.145.195:5765',
-       'https://192.168.145.195:3000',
+    'https://192.168.145.195:5765',
+    'https://192.168.145.195:3000',
 )

@@ -14,10 +14,10 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
-    class Meta:
-        verbose_name = 'Новость'
-        verbose_name_plural = 'Новости'
-
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(News, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'
