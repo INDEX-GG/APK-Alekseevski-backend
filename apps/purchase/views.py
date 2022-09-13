@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .permissions import IsAdminOrReadOnly
+from apps.base.permissions import IsAdminOrReadOnly
 from .serializers import PurchaseSerializer, ApplicationPurchaseSerializer
 from .models import Purchase, ApplicationPurchase
 

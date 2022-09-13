@@ -8,10 +8,9 @@ schema_view = get_schema_view(
         title="APK Alekseevski",
         default_version='v1',
         description="Docs for api APK Alekseevski",
-        license=openapi.License(name="BSD License"),
     ),
     public=True,
-    permission_classes=(permissions.AllowAny,),
+    permission_classes=(permissions.IsAdminUser,),
 )
 
 urlpatterns = [

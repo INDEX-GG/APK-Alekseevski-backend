@@ -5,8 +5,8 @@ class Bidding(models.Model):
     title = models.CharField('title', max_length=255)
     description = models.TextField('description')
     text = models.TextField('text')
-    image = models.ImageField('image', upload_to='images/bidding/', default='images/bidding/no_image.jpg', blank=True)
-    docs = models.FileField('docs', upload_to='docs/bidding/', default='docs/bidding/no_docs.txt', blank=True)
+    image = models.ImageField('image', upload_to='images/bidding/')
+    docs = models.FileField('docs', upload_to='docs/bidding/')
 
     def __str__(self):
         return self.title
@@ -20,7 +20,7 @@ class ApplicationBidding(models.Model):
     inn = models.CharField('inn', max_length=255)
     organization = models.CharField('organization', max_length=255)
     email = models.EmailField('email', max_length=255)
-    phone = models.CharField('phone', max_length=20, blank=True)
+    phone = models.CharField('phone', max_length=20)
     tick = models.BooleanField('tick', default=False)
 
     def __str__(self):

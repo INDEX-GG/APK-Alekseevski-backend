@@ -30,18 +30,21 @@ INSTALLED_APPS = [
 
     # rest
     'rest_framework',
+    'rest_framework_simplejwt',
+    'djoser',
     'drf_yasg',
+    'corsheaders',
 
     # unused
-    'corsheaders',
     'django_filters',
 
     # apps
     'apps.news.apps.NewsConfig',
     'apps.catalog.apps.CatalogConfig',
-    'apps.customers.apps.CustomersConfig',
+    'apps.profile.apps.ProfileConfig',
     'apps.bidding.apps.BiddingConfig',
     'apps.purchase.apps.PurchaseConfig',
+    'apps.cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -123,15 +126,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "template_static"),
-# ]
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -142,6 +138,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication'
     )
@@ -160,9 +157,8 @@ SIMPLE_JWT = {
     'AUDIENCE': None,
     'ISSUER': None,
     'JWK_URL': None,
-    'LEEWAY': 0,
 
-    'AUTH_HEADER_TYPES': ('APK',),
+    'AUTH_HEADER_TYPES': ('JWT',),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
     'USER_ID_FIELD': 'id',
     'USER_ID_CLAIM': 'user_id',
@@ -179,10 +175,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=365),
 }
 
-# Connecting with react
-CORS_ORIGIN_ALLOW_ALL = False
-
-CORS_ORIGIN_WHITELIST = (
-    'https://192.168.145.195:5765',
-    'https://192.168.145.195:3000',
-)
+# CORS_ORIGIN_ALLOW_ALL = False
+# CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = ()

@@ -7,12 +7,14 @@ class News(models.Model):
     slug = models.SlugField('slug', max_length=255, blank=True, null=True, unique=True)
     description = models.TextField('description')
     text = models.TextField('text')
-    image = models.ImageField('image', upload_to='images/news/', default='images/news/no_image.jpg', blank=True)
+    image = models.ImageField('image', upload_to='images/news/')
     date = models.DateField('date', auto_now_add=True)
-    publish = models.BooleanField('publish', default=True)
+    publish = models.BooleanField('publish')
 
     def __str__(self):
         return self.title
+
+    ''' Automatic addition slug '''
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

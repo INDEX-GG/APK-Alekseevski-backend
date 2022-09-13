@@ -13,7 +13,6 @@ class ProductsSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    # category_products = serializers.SlugRelatedField(many=True, read_only=True, slug_field="title")
     category_products = ProductsSerializer(many=True, read_only=True)
 
     class Meta:
