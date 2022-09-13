@@ -26,7 +26,7 @@
 #### 2.  Create a virtual environment and activate
  - `pip install virtualenv`
  - `python3 -m venv env`
- - `env\Scripts\activate` or `source env/bin/activate` on Linux
+ - `source env/bin/activate` 
 #### 3.```pip install -r requirements.txt```
 
 
