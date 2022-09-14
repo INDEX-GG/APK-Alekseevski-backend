@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Purchase, ApplicationPurchase
+from . import models
 
-admin.site.register(Purchase)
-admin.site.register(ApplicationPurchase)
+admin.site.register(models.Purchase)
+admin.site.register(models.ApplicationPurchase)

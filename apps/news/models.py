@@ -14,7 +14,7 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
-    ''' Automatic addition slug '''
+    """ Automatic addition slug """
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

@@ -1,11 +1,11 @@
 from rest_framework import viewsets
 from apps.base.permissions import IsAdminOrReadOnly
-from .serializers import NewsSerializer
-from .models import News
+from . import serializers
+from . import models
 
 
 class NewsViewSet(viewsets.ModelViewSet):
-    queryset = News.objects.all()
-    serializer_class = NewsSerializer
+    queryset = models.News.objects.all()
+    serializer_class = serializers.NewsSerializer
     permission_classes = (IsAdminOrReadOnly,)
     lookup_field = 'slug'

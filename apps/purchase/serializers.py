@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from .models import Purchase, ApplicationPurchase
+from . import models
 
 
 class PurchaseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Purchase
+        model = models.Purchase
         fields = '__all__'
 
 
 class ApplicationPurchaseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ApplicationPurchase
+        model = models.ApplicationPurchase
         fields = '__all__'

@@ -1,6 +1,9 @@
 # APK-Alekseevski backend
 
 ## API Endpoints
+
+### Auth 
+
 ### News
 - /api/v1/news/ (News create and list endpoint)
 - /api/v1/news/{slug}/ (News retrieve, update and destroy endpoint)
@@ -16,7 +19,16 @@
 - /api/v1/catalog/{slug_category}/{slug_product}/ (View selected product)
 ### Bidding
 - /api/v1/bidding/ (Bidding create and list endpoint)
-- /api/v1/bidding/{slug}/ (Bidding retrieve, update and destroy endpoint)
+- /api/v1/bidding/{id}/ (Bidding retrieve, update and destroy endpoint)
+### Application bidding
+- /api/v1/application-bidding/ (Application bidding create and list endpoint)
+- /api/v1/application-bidding/{id}/ (Application bidding retrieve, update and destroy endpoint)
+### Purchase
+- /api/v1/purchase/ (Purchase create and list endpoint)
+- /api/v1/purchase/{id}/ (Purchase retrieve, update and destroy endpoint)
+### Application purchase
+- /api/v1/application-purchase/ (Application purchase create and list endpoint)
+- /api/v1/application-purchase/{id}/ (Application purchase retrieve, update and destroy endpoint)
 
 
 

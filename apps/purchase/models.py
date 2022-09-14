@@ -17,6 +17,7 @@ class Purchase(models.Model):
 
 
 class ApplicationPurchase(models.Model):
+    # TODO: Add User
     inn = models.CharField('inn', max_length=255)
     organization = models.CharField('organization', max_length=255)
     email = models.EmailField('email', max_length=255)

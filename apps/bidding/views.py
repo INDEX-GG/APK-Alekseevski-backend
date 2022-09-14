@@ -1,17 +1,17 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from apps.base.permissions import IsAdminOrReadOnly, IsOwnerProfileOrReadOnly
-from .serializers import BiddingSerializer, ApplicationBiddingSerializer
-from .models import Bidding, ApplicationBidding
+from . import serializers
+from . import models
 
 
 class BiddingViewSet(viewsets.ModelViewSet):
-    queryset = Bidding.objects.all()
-    serializer_class = BiddingSerializer
+    queryset = models.Bidding.objects.all()
+    serializer_class = serializers.BiddingSerializer
     permission_classes = (IsAdminOrReadOnly,)
 
 
 class ApplicationBiddingViewSet(viewsets.ModelViewSet):
-    queryset = ApplicationBidding.objects.all()
-    serializer_class = ApplicationBiddingSerializer
+    queryset = models.ApplicationBidding.objects.all()
+    serializer_class = serializers.ApplicationBiddingSerializer
     permission_classes = (IsAuthenticated, IsOwnerProfileOrReadOnly)

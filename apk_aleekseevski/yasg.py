@@ -10,7 +10,7 @@ schema_view = get_schema_view(
         description="Docs for api APK Alekseevski",
     ),
     public=True,
-    permission_classes=(permissions.IsAdminUser,),
+    permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
