@@ -7,14 +7,14 @@ services:
     ports:
       - "5999:8000"
 
-    env_file:
-      - .env
-    environment:
-      - SECRET_KEY=${SECRET_KEY}
-      - NAME=${NAME}
-      - USER=${USER}
-      - PASSWORD=&{PASSWORD}
-      - HOST=&{HOST}
-      - PORT=&{PORT}
+#    env_file:
+#      - .env
+#    environment:
+#      - SECRET_KEY=${SECRET_KEY}
+#      - NAME=${NAME}
+#      - USER=${USER}
+#      - PASSWORD=&{PASSWORD}
+#      - HOST=&{HOST}
+#      - PORT=&{PORT}
 
 

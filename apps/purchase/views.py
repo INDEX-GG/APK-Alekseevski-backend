@@ -1,5 +1,6 @@
 from rest_framework import viewsets
-from apps.base.permissions import IsAdminOrReadOnly
+from rest_framework.permissions import IsAuthenticated
+from apps.base.permissions import IsAdminOrReadOnly, IsOwnerProfileOrReadOnly
 from . import serializers
 from . import models
 
@@ -13,4 +14,5 @@ class PurchaseViewSet(viewsets.ModelViewSet):
 class ApplicationPurchaseViewSet(viewsets.ModelViewSet):
     queryset = models.ApplicationPurchase.objects.all()
     serializer_class = serializers.ApplicationPurchaseSerializer
-    permission_classes = (IsAdminOrReadOnly,)
+    permission_classes = (IsAuthenticated, IsOwnerProfileOrReadOnly)
+

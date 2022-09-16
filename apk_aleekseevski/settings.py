@@ -173,6 +173,17 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=365),
 }
 
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'JWT': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
+
 # CORS_ORIGIN_ALLOW_ALL = False
 # CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
 # CORS_ALLOW_CREDENTIALS = True

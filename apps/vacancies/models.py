@@ -6,8 +6,6 @@ class Vacancy(models.Model):
     description = models.TextField('description')
     text = models.TextField('text')
 
-    # docs = models.FileField('docs', upload_to='docs/purchase/', default='docs/purchase/no_docs.txt', blank=True)
-
     def __str__(self):
         return self.title
 
@@ -16,16 +14,17 @@ class Vacancy(models.Model):
         verbose_name_plural = 'Вакансии'
 
 
-class Vacancy(models.Model):
-    title = models.CharField('title', max_length=255)
+class ApplicationVacancy(models.Model):
+    name = models.CharField('name', max_length=255)
+    vacancy = models.ForeignKey(Vacancy, related_name='application_vacancy', on_delete=models.CASCADE)
+    email = models.EmailField('email', max_length=50)
+    phone = models.CharField('phone', max_length=20)
     description = models.TextField('description')
-    text = models.TextField('text')
-
-    # docs = models.FileField('docs', upload_to='docs/purchase/', default='docs/purchase/no_docs.txt', blank=True)
+    docs = models.FileField('docs', upload_to='vacancies/')
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
-        verbose_name = 'Вакасния'
-        verbose_name_plural = 'Вакансии'
+        verbose_name = 'Заявка на вакансию'
+        verbose_name_plural = 'Заявки на вакансии'
