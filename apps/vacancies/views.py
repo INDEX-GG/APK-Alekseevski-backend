@@ -7,7 +7,7 @@ from . import models
 class VacancyViewSet(viewsets.ModelViewSet):
     queryset = models.Vacancy.objects.all()
     serializer_class = serializers.VacancySerializer
-    # permission_classes = (IsAdminOrReadOnly,)
+    permission_classes = (IsAdminOrReadOnly,)
 
 
 class ApplicationVacancyViewSet(viewsets.ModelViewSet):
