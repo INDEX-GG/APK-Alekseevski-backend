@@ -4,7 +4,7 @@ services:
     image: alekseevski
     container_name: alekseevski
     volumes:
-      - code/media:./media
+      - media:/code/media
     restart: always
     ports:
       - "5999:8000"
