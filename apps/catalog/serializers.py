@@ -1,10 +1,10 @@
-from rest_framework import serializers
-from . import models
+from rest_framework.serializers import ModelSerializer
+from .models import Products, Category
 
 
-class ProductsSerializer(serializers.ModelSerializer):
+class ProductsSerializer(ModelSerializer):
     class Meta:
-        model = models.Products
+        model = Products
         fields = '__all__'
         lookup_field = 'slug'
         extra_kwargs = {
@@ -12,11 +12,11 @@ class ProductsSerializer(serializers.ModelSerializer):
         }
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class CategorySerializer(ModelSerializer):
     category_products = ProductsSerializer(many=True, read_only=True)
 
     class Meta:
-        model = models.Category
+        model = Category
         fields = '__all__'
         lookup_field = 'slug'
         extra_kwargs = {

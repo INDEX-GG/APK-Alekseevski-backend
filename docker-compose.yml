@@ -3,6 +3,11 @@ services:
   app:
     image: alekseevski
     container_name: alekseevski
+    volumes:
+      - media:./media
     restart: always
     ports:
       - "5999:8000"
+
+volumes:
+  media:

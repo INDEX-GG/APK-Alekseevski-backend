@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from . import models
+from .models import Vacancy, ApplicationVacancy
 
 
 class VacancySerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Vacancy
+        model = Vacancy
         fields = '__all__'
 
 
 class ApplicationVacancySerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.ApplicationVacancy
+        model = ApplicationVacancy
         fields = '__all__'

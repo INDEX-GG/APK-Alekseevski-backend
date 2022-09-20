@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . import models
+from .models import Vacancy,ApplicationVacancy
 
-admin.site.register(models.Vacancy)
-admin.site.register(models.ApplicationVacancy)
+admin.site.register(Vacancy)
+admin.site.register(ApplicationVacancy)

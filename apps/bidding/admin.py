@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . import models
+from .models import Bidding, ApplicationBidding
 
-admin.site.register(models.Bidding)
-admin.site.register(models.ApplicationBidding)
+admin.site.register(Bidding)
+admin.site.register(ApplicationBidding)

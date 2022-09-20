@@ -5,8 +5,8 @@ class Purchase(models.Model):
     title = models.CharField('title', max_length=255)
     description = models.TextField('description')
     text = models.TextField('text')
-    image = models.ImageField('image', upload_to='images/purchase/', default='images/purchase/no_image.jpg', blank=True)
-    docs = models.FileField('docs', upload_to='docs/purchase/', default='docs/purchase/no_docs.txt', blank=True)
+    image = models.ImageField('image', upload_to='images/purchase/')
+    docs = models.FileField('docs', upload_to='docs/purchase/')
 
     def __str__(self):
         return self.title
@@ -17,16 +17,15 @@ class Purchase(models.Model):
 
 
 class ApplicationPurchase(models.Model):
-    # TODO: Add User
     inn = models.CharField('inn', max_length=255)
     organization = models.CharField('organization', max_length=255)
     email = models.EmailField('email', max_length=255)
-    phone = models.CharField('phone', max_length=20, blank=True)
-    tick = models.BooleanField('tick', default=False)
+    phone = models.CharField('phone', max_length=20)
+    tick = models.BooleanField('tick')
 
     def __str__(self):
         return self.organization
 
     class Meta:
         verbose_name = 'Заявка на закупку'
-        verbose_name_plural = 'Заявки на зкупку'
+        verbose_name_plural = 'Заявки на закупку'

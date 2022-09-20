@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from . import models
+from .models import News
 
 
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.News
+        model = News
         fields = '__all__'
         lookup_field = 'slug'
         extra_kwargs = {

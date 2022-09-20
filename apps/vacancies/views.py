@@ -1,16 +1,16 @@
 from rest_framework import viewsets
 from apps.base.permissions import IsAdminOrReadOnly
-from . import serializers
-from . import models
+from .serializers import VacancySerializer, ApplicationVacancySerializer
+from .models import Vacancy, ApplicationVacancy
 
 
 class VacancyViewSet(viewsets.ModelViewSet):
-    queryset = models.Vacancy.objects.all()
-    serializer_class = serializers.VacancySerializer
+    queryset = Vacancy.objects.all()
+    serializer_class = VacancySerializer
     permission_classes = (IsAdminOrReadOnly,)
 
 
 class ApplicationVacancyViewSet(viewsets.ModelViewSet):
-    queryset = models.ApplicationVacancy.objects.all()
-    serializer_class = serializers.ApplicationVacancySerializer
+    queryset = ApplicationVacancy.objects.all()
+    serializer_class = ApplicationVacancySerializer
     # permission_classes = (IsAdminOrReadOnly,)

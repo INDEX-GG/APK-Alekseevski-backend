@@ -17,12 +17,11 @@ class Bidding(models.Model):
 
 
 class ApplicationBidding(models.Model):
-    # TODO: Add User
     inn = models.CharField('inn', max_length=255)
     organization = models.CharField('organization', max_length=255)
     email = models.EmailField('email', max_length=255)
     phone = models.CharField('phone', max_length=20)
-    tick = models.BooleanField('tick', default=False)
+    tick = models.BooleanField('tick')
 
     def __str__(self):
         return self.organization

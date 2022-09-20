@@ -1,14 +1,14 @@
-from rest_framework import serializers
-from . import models
+from rest_framework.serializers import ModelSerializer
+from .models import Bidding, ApplicationBidding
 
 
-class BiddingSerializer(serializers.ModelSerializer):
+class BiddingSerializer(ModelSerializer):
     class Meta:
-        model = models.Bidding
+        model = Bidding
         fields = '__all__'
 
 
-class ApplicationBiddingSerializer(serializers.ModelSerializer):
+class ApplicationBiddingSerializer(ModelSerializer):
     class Meta:
-        model = models.ApplicationBidding
+        model = ApplicationBidding
         fields = '__all__'

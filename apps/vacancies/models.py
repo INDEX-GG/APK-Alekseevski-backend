@@ -12,7 +12,7 @@ class Vacancy(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Вакасния'
+        verbose_name = 'Вакансия'
         verbose_name_plural = 'Вакансии'
 
 
@@ -22,10 +22,7 @@ class ApplicationVacancy(models.Model):
     email = models.EmailField('email', max_length=50)
     phone = models.CharField('phone', max_length=20)
     description = models.TextField('description', blank=True, null=True)
-    docs = models.FileField('docs',
-                            upload_to='vacancies/',
-                            blank=True,
-                            null=True,
+    docs = models.FileField('docs', upload_to='vacancies/', blank=True, null=True,
                             validators=[FileExtensionValidator(allowed_extensions=['txt', 'pdf', 'doc', 'docx']),
                                         validate_size_file])
 

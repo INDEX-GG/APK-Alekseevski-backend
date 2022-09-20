@@ -1,26 +1,26 @@
 from rest_framework import viewsets, generics, views
 from rest_framework import status
-from rest_framework.permissions import IsAdminUser
-from .serializers import *
+from rest_framework.permissions import IsAdminUser, AllowAny
+from .serializers import CategorySerializer, ProductsSerializer
 from rest_framework.response import Response
-from . import models
+from .models import Category, Products
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = models.Category.objects.all()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = (IsAdminUser,)
     lookup_field = 'slug'
 
 
 class ProductsViewSet(viewsets.ModelViewSet):
-    queryset = models.Products.objects.all()
+    queryset = Products.objects.all()
     serializer_class = ProductsSerializer
     permission_classes = (IsAdminUser,)
     lookup_field = 'slug'
 
     def get_queryset(self):
-        queryset = models.Products.objects.all()
+        queryset = Products.objects.all()
         category = self.request.query_params.get('category')
         if category is not None:
             queryset = queryset.filter(category=category)
@@ -28,18 +28,19 @@ class ProductsViewSet(viewsets.ModelViewSet):
 
 
 class CatalogAPIView(generics.ListAPIView):
-    queryset = models.Category.objects.all()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (AllowAny,)
 
 
 class CatalogCategoryAPIView(views.APIView):
-    queryset = models.Category.objects.all()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (AllowAny,)
 
     def get(self, requests, slug_category):
         try:
-            # TODO: Add get_or_404
-            current_category = models.Category.objects.get(slug=slug_category)
+            current_category = Category.objects.get(slug=slug_category)
             products = current_category.category_products.all()
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -49,13 +50,13 @@ class CatalogCategoryAPIView(views.APIView):
 
 
 class ProductAPIView(views.APIView):
-    queryset = models.Category.objects.all()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (AllowAny,)
 
     def get(self, requests, slug_category, slug_product):
         try:
-            # TODO: Add get_or_404
-            current_category = models.Category.objects.get(slug=slug_category)
+            current_category = Category.objects.get(slug=slug_category)
             product = current_category.category_products.filter(slug=slug_product)
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)

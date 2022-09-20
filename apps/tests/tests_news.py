@@ -6,12 +6,6 @@ from apps.news.models import News
 
 
 class NewsTests(APITestCase):
-
-    def test_list_news(self):
-        url = '/api/v1/news/'
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
     def test_create_news(self):
         url = '/api/v1/news/'
         data = {'title': 'Новость',
@@ -23,6 +17,11 @@ class NewsTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(News.objects.count(), 1)
         self.assertEqual(News.objects.get().title, 'Новость')
+
+    def test_list_news(self):
+        url = '/api/v1/news/'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
 def temporary_image():
