@@ -3,9 +3,9 @@ from pytils.translit import slugify
 
 
 class Category(models.Model):
-    title = models.CharField('title', max_length=255, blank=False)
+    title = models.CharField('Заголовок', max_length=255, blank=False)
     slug = models.SlugField('slug', max_length=255, blank=True, null=True, unique=True)
-    image = models.ImageField('image', upload_to='images/category/')
+    image = models.ImageField('Изображение', upload_to='images/category/')
 
     def __str__(self):
         return self.title
@@ -22,16 +22,16 @@ class Category(models.Model):
         super(Category, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = 'Категория'
+        verbose_name = 'Категорию'
         verbose_name_plural = 'Категории'
 
 
 class Products(models.Model):
     category = models.ForeignKey(Category, related_name='category_products', on_delete=models.CASCADE)
-    title = models.CharField('title', max_length=255)
+    title = models.CharField('Заголовок', max_length=255)
     slug = models.SlugField('slug', max_length=255, blank=True, null=True, unique=True)
-    description = models.TextField('description')
-    price = models.IntegerField('price')
+    description = models.TextField('Описание')
+    price = models.IntegerField('Цена')
 
     def __str__(self):
         return self.title
@@ -51,11 +51,11 @@ class Products(models.Model):
 
 class Images(models.Model):
     products = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField('image', upload_to='images/products/')
+    image = models.ImageField('Картинка', upload_to='images/products/')
 
     def src(self):
         return self.image.url
 
     class Meta:
-        verbose_name = 'Картинки'
+        verbose_name = 'Картинку'
         verbose_name_plural = 'Картинки'

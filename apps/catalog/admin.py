@@ -3,8 +3,6 @@ from django.utils.safestring import mark_safe
 
 from apps.catalog.models import Products, Category, Images
 
-admin.site.register(Category)
-
 
 class ImageInline(admin.TabularInline):
     model = Images
@@ -21,3 +19,10 @@ class ImageInline(admin.TabularInline):
 class ProductsAdmin(admin.ModelAdmin):
     list_display = ['title']
     inlines = [ImageInline, ]
+    exclude = ('slug',)
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['title']
+    exclude = ('slug',)
