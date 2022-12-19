@@ -5,12 +5,16 @@ from pytils.translit import slugify
 class Category(models.Model):
     title = models.CharField('title', max_length=255, blank=False)
     slug = models.SlugField('slug', max_length=255, blank=True, null=True, unique=True)
+    image = models.ImageField('image', upload_to='images/category/')
 
     def __str__(self):
         return self.title
 
+    def src(self):
+        return self.image.url
+
     """ 
-    Автоматическое формирование slug 
+    Automatic formation slug 
     """
 
     def save(self, *args, **kwargs):
@@ -28,11 +32,13 @@ class Products(models.Model):
     slug = models.SlugField('slug', max_length=255, blank=True, null=True, unique=True)
     description = models.TextField('description')
     price = models.IntegerField('price')
-    image = models.ImageField('image', upload_to='images/products/')
-    publish = models.BooleanField('publish')
 
     def __str__(self):
         return self.title
+
+    """ 
+    Automatic formation slug 
+    """
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
@@ -41,3 +47,15 @@ class Products(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
+
+class Images(models.Model):
+    products = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField('image', upload_to='images/products/')
+
+    def src(self):
+        return self.image.url
+
+    class Meta:
+        verbose_name = 'Картинки'
+        verbose_name_plural = 'Картинки'

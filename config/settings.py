@@ -1,5 +1,4 @@
 import os
-from datetime import timedelta
 from os.path import join, dirname
 from dotenv import load_dotenv
 from pathlib import Path
@@ -28,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_cleanup.apps.CleanupConfig',
     'rest_framework',
     'drf_yasg',
     'corsheaders',

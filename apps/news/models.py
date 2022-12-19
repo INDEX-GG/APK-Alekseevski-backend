@@ -1,5 +1,4 @@
 from django.db import models
-from pytils.translit import slugify
 
 
 class News(models.Model):

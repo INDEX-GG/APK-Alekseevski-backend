@@ -1,39 +1,18 @@
-from rest_framework import viewsets, generics, views
-from rest_framework import status
-from rest_framework.permissions import IsAdminUser, AllowAny
-from .serializers import CategorySerializer, ProductsSerializer
+from rest_framework import generics, views, status
 from rest_framework.response import Response
-from .models import Category, Products
+from rest_framework.permissions import AllowAny
+
+from apps.catalog.serializers import CategorySerializer, ProductsSerializer
+from apps.catalog.models import Category
 
 
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = (IsAdminUser,)
-    lookup_field = 'slug'
-
-
-class ProductsViewSet(viewsets.ModelViewSet):
-    queryset = Products.objects.all()
-    serializer_class = ProductsSerializer
-    permission_classes = (IsAdminUser,)
-    lookup_field = 'slug'
-
-    def get_queryset(self):
-        queryset = Products.objects.all()
-        category = self.request.query_params.get('category')
-        if category is not None:
-            queryset = queryset.filter(category=category)
-        return queryset
-
-
-class CatalogAPIView(generics.ListAPIView):
+class CategoryAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = (AllowAny,)
 
 
-class CatalogCategoryAPIView(views.APIView):
+class CategoryItemAPIView(views.APIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = (AllowAny,)

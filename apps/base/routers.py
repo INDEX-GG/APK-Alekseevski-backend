@@ -4,8 +4,6 @@ from apps.purchase.views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'products', ProductsViewSet)
-router.register(r'categories', CategoryViewSet)
 router.register(r'bidding', BiddingViewSet)
 router.register(r'application-bidding', ApplicationBiddingViewSet)
 router.register(r'purchase', PurchaseViewSet)

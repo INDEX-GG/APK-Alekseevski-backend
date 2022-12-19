@@ -1,5 +1,23 @@
 from django.contrib import admin
-from .models import Products, Category
+from django.utils.safestring import mark_safe
 
-admin.site.register(Products)
+from apps.catalog.models import Products, Category, Images
+
 admin.site.register(Category)
+
+
+class ImageInline(admin.TabularInline):
+    model = Images
+    extra = 0
+    readonly_fields = ["preview"]
+
+    def preview(self, obj):
+        return mark_safe(f'<img src="{obj.image.url}" style="max-height: 200px;">')
+
+    preview.short_description = "Картинки"
+
+
+@admin.register(Products)
+class ProductsAdmin(admin.ModelAdmin):
+    list_display = ['title']
+    inlines = [ImageInline, ]
