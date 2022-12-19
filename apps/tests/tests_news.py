@@ -1,7 +1,9 @@
+import tempfile
+from datetime import date
+from PIL import Image
+from pytils.translit import slugify
 from rest_framework import status
 from rest_framework.test import APITestCase
-import tempfile
-from PIL import Image
 from apps.news.models import News
 
 
@@ -17,6 +19,11 @@ class NewsTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(News.objects.count(), 1)
         self.assertEqual(News.objects.get().title, 'Новость')
+        self.assertEqual(News.objects.get().slug, slugify(News.objects.get().title))
+        self.assertEqual(News.objects.get().description, 'Описание')
+        self.assertEqual(News.objects.get().text, 'Текст')
+        self.assertEqual(News.objects.get().date, date.today())
+        self.assertEqual(News.objects.get().publish, True)
 
     def test_list_news(self):
         url = '/api/v1/news/'

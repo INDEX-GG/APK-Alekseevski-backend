@@ -13,4 +13,4 @@ class VacancyViewSet(viewsets.ModelViewSet):
 class ApplicationVacancyViewSet(viewsets.ModelViewSet):
     queryset = ApplicationVacancy.objects.all()
     serializer_class = ApplicationVacancySerializer
-    # permission_classes = (IsAdminOrReadOnly,)
+    permission_classes = (IsAdminOrReadOnly,)
