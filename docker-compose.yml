@@ -5,9 +5,11 @@ services:
     container_name: alekseevski
     volumes:
       - media:/code/media
+      - static:/code/static
     restart: always
     ports:
       - "5999:8000"
 
 volumes:
   media:
+  static:
