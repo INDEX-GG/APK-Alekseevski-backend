@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'apps.news.apps.NewsConfig',
     'apps.catalog.apps.CatalogConfig',
     'apps.vacancies.apps.VacanciesConfig',
+    'apps.map.apps.MapConfig',
 ]
 
 MIDDLEWARE = [
