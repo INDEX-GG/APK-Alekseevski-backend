@@ -1,16 +1,18 @@
-from rest_framework import viewsets
-from apps.base.permissions import IsAdminOrReadOnly
-from .serializers import VacancySerializer, ApplicationVacancySerializer
-from .models import Vacancy, ApplicationVacancy
+from rest_framework import generics
+from apps.vacancies.serializers import VacancySerializer, ApplicationVacancySerializer
+from apps.vacancies.models import Vacancy, ApplicationVacancy
 
 
-class VacancyViewSet(viewsets.ModelViewSet):
+class VacancyAPIView(generics.ListAPIView):
+    queryset = Vacancy.objects.all().order_by('-pk')
+    serializer_class = VacancySerializer
+
+
+class VacancyItemAPIView(generics.RetrieveAPIView):
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
-    permission_classes = (IsAdminOrReadOnly,)
 
 
-class ApplicationVacancyViewSet(viewsets.ModelViewSet):
+class ApplicationVacancyAPIView(generics.CreateAPIView):
     queryset = ApplicationVacancy.objects.all()
     serializer_class = ApplicationVacancySerializer
-    permission_classes = (IsAdminOrReadOnly,)

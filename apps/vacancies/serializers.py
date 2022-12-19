@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Vacancy, ApplicationVacancy
+from apps.vacancies.models import Vacancy, ApplicationVacancy
 
 
 class VacancySerializer(serializers.ModelSerializer):

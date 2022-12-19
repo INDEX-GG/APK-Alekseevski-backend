@@ -2,8 +2,6 @@
 
 ## API Endpoints
 
-### Auth 
-
 ### News
 - /api/v1/news/ (News create and list endpoint)
 - /api/v1/news/{slug}/ (News retrieve, update and destroy endpoint)
