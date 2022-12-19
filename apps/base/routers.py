@@ -6,7 +6,6 @@ from apps.vacancies.views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'news', NewsViewSet)
 router.register(r'products', ProductsViewSet)
 router.register(r'categories', CategoryViewSet)
 router.register(r'bidding', BiddingViewSet)
