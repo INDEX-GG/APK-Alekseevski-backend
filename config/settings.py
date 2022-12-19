@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     # apps
     'apps.news.apps.NewsConfig',
     'apps.catalog.apps.CatalogConfig',
-    'apps.purchase.apps.PurchaseConfig',
     'apps.vacancies.apps.VacanciesConfig',
 ]
 
