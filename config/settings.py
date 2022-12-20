@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.catalog.apps.CatalogConfig',
     'apps.vacancies.apps.VacanciesConfig',
     'apps.map.apps.MapConfig',
+    'apps.purchase.apps.PurchaseConfig',
 ]
 
 MIDDLEWARE = [
@@ -135,12 +136,12 @@ REST_FRAMEWORK = {
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:1337',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:1337',
+# ]
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:1337"]
+# CSRF_TRUSTED_ORIGINS = ["*"]
 
 # CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
 # CORS_ORIGIN_WHITELIST = ()

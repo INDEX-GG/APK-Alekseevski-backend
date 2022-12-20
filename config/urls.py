@@ -11,6 +11,7 @@ urlpatterns = [
     path('api/v1/', include('apps.news.urls')),
     path('api/v1/', include('apps.vacancies.urls')),
     path('api/v1/', include('apps.map.urls')),
+    path('api/v1/', include('apps.purchase.urls')),
 ]
 
 urlpatterns += doc_urls
