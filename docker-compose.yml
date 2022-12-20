@@ -3,13 +3,36 @@ services:
   app:
     image: alekseevski
     container_name: alekseevski
-    volumes:
-      - media:/code/media
-      - static:/code/static
+    command: sh -c "python manage.py collectstatic --noinput &&
+                    python manage.py migrate &&
+                    gunicorn --bind 0.0.0.0:8000 config.wsgi"
     restart: always
+    volumes:
+      - media_volume:/usr/src/app/mediafiles
+      - static_volume:/usr/src/app/staticfiles
+    expose:
+      - 8000
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.prod.db
+  nginx:
+    build: ./nginx
+    volumes:
+      - media_volume:/usr/src/app/mediafiles
+      - static_volume:/usr/src/app/staticfiles
     ports:
-      - "5999:8000"
+      - "1337:80"
+    depends_on:
+      - app
 
 volumes:
-  media:
-  static:
+  media_volume:
+  static_volume:
+  postgres_data:
