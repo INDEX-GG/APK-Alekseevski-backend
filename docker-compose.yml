@@ -28,7 +28,7 @@ services:
       - media_volume:/usr/src/app/mediafiles
       - static_volume:/usr/src/app/staticfiles
     ports:
-      - "1337:80"
+      - "5999:80"
     depends_on:
       - app
 
