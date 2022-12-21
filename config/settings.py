@@ -136,13 +136,14 @@ REST_FRAMEWORK = {
 }
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-#
+
 # CORS_ALLOWED_ORIGINS = [
 #     'https://testguru.ru/',
 # ]
+
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
 
-CSRF_TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://testguru.ru', 'https://www.testguru.ru']
 
 # CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
