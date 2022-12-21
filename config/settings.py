@@ -15,7 +15,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (bool(int(os.environ.get('DEBUG', 0))))
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -135,13 +136,13 @@ REST_FRAMEWORK = {
 }
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+#
 # CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:1337',
+#     'https://testguru.ru/',
 # ]
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
-# CSRF_TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["*"]
 
 # CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
-# CORS_ORIGIN_WHITELIST = ()
