@@ -146,4 +146,11 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = ['https://testguru.ru', 'https://www.testguru.ru']
 
+# Subdomain
+USE_X_FORWARDED_HOST = True
+FORCE_SCRIPT_NAME = '/alekseevski-api/'
+SESSION_COOKIE_PATH = '/project_name/'
+LOGIN_REDIRECT_URL = '/project_name/'
+LOGOUT_REDIRECT_URL = '/project_name/'
+
 # CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
