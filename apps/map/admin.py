@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from apps.map.models import Addresses
+from apps.map.models import Addresses, Video
+
+admin.site.register(Video)
 
 
 @admin.register(Addresses)

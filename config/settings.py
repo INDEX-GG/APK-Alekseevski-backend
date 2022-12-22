@@ -117,10 +117,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "/alekseevski-api/static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = "/alekseevski-api/media/"
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -147,8 +147,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = ['https://testguru.ru', 'https://www.testguru.ru']
 
 # Subdomain
-USE_X_FORWARDED_HOST = True
-FORCE_SCRIPT_NAME = '/alekseevski-api/'
+# USE_X_FORWARDED_HOST = True
+# FORCE_SCRIPT_NAME = '/alekseevski-api'
 # SESSION_COOKIE_PATH = '/alekseevski-api/'
 # LOGIN_REDIRECT_URL = '/alekseevski-api/'
 # LOGIN_URL = '/alekseevski-api/admin/login'

@@ -11,3 +11,14 @@ class Addresses(models.Model):
     class Meta:
         verbose_name = 'Адрес'
         verbose_name_plural = 'Адреса'
+
+
+class Video(models.Model):
+    video = models.FileField('Видео', upload_to='video/', null=True)
+
+    def src(self):
+        return self.video.url
+
+    class Meta:
+        verbose_name = 'Видео'
+        verbose_name_plural = 'Видео'
