@@ -1,4 +1,5 @@
 from rest_framework import generics
+
 from apps.vacancies.serializers import VacancySerializer, ApplicationVacancySerializer
 from apps.vacancies.models import Vacancy, ApplicationVacancy
 

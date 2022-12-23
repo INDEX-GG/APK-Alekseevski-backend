@@ -15,11 +15,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (bool(int(os.environ.get('DEBUG', 0))))
 
-# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,7 +31,6 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
 
-    # apps
     'apps.news.apps.NewsConfig',
     'apps.catalog.apps.CatalogConfig',
     'apps.vacancies.apps.VacanciesConfig',
@@ -106,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'Asia/Yekaterinburg'
 
 USE_I18N = True
 
@@ -137,24 +134,15 @@ REST_FRAMEWORK = {
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# CORS_ALLOWED_ORIGINS = [
-#     'https://testguru.ru/',
-# ]
+SWAGGER_URL = os.environ.get("SWAGGER_URL")
 
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_ALL_ORIGINS = True
-
-CSRF_TRUSTED_ORIGINS = ['https://testguru.ru', 'https://www.testguru.ru', 'http://localhost:5999']
-
-# Subdomain
-USE_X_FORWARDED_HOST = True
-# FORCE_SCRIPT_NAME = '/alekseevski-api'
-# SESSION_COOKIE_PATH = '/alekseevski-api/'
-# LOGIN_REDIRECT_URL = '/alekseevski-api/'
-# LOGIN_URL = '/alekseevski-api/admin/login'
-# LOGOUT_REDIRECT_URL = '/alekseevski-api/'
-
+CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS").split(",")
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(",")
+CSRF_COOKIE_SECURE = True
+
+USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True

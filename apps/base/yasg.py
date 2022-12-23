@@ -2,6 +2,8 @@ from django.urls import path
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from config.settings import SWAGGER_URL
+
 schema_view = get_schema_view(
     openapi.Info(
         title="APK Alekseevski",
@@ -9,7 +11,7 @@ schema_view = get_schema_view(
         description="Docs for api APK Alekseevski",
     ),
     public=True,
-    url='https://testguru.ru'
+    url=SWAGGER_URL
 )
 
 urlpatterns = [

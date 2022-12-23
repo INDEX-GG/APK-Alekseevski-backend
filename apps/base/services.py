@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 def validate_size_file(file_obj):
     """
-    Проверка размера файла
+    File size check
     """
 
     megabyte_limit = 2
