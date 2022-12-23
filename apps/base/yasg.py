@@ -9,7 +9,7 @@ schema_view = get_schema_view(
         description="Docs for api APK Alekseevski",
     ),
     public=True,
-
+    url='https://testguru.ru'
 )
 
 urlpatterns = [
