@@ -144,7 +144,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
 
-CSRF_TRUSTED_ORIGINS = ['https://testguru.ru', 'https://www.testguru.ru']
+CSRF_TRUSTED_ORIGINS = ['https://testguru.ru', 'https://www.testguru.ru', 'http://localhost:5999']
 
 # Subdomain
 # USE_X_FORWARDED_HOST = True
@@ -155,3 +155,6 @@ CSRF_TRUSTED_ORIGINS = ['https://testguru.ru', 'https://www.testguru.ru']
 # LOGOUT_REDIRECT_URL = '/alekseevski-api/'
 
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
