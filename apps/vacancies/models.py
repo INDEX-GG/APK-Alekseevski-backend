@@ -5,9 +5,7 @@ from apps.base.services import validate_size_file
 
 
 class Vacancy(models.Model):
-    title = models.CharField('Заголовок', max_length=255)
-    description = models.TextField('Краткое описание')
-    text = models.TextField('Полное описание')
+    title = models.CharField('Название вакансии', max_length=255)
 
     def __str__(self):
         return self.title
@@ -18,8 +16,8 @@ class Vacancy(models.Model):
 
 
 class ApplicationVacancy(models.Model):
-    name = models.CharField('Имя', max_length=255)
-    vacancy = models.ForeignKey(Vacancy, related_name='application_vacancy', on_delete=models.CASCADE)
+    fullname = models.CharField('Имя', max_length=255)
+    vacancy = models.CharField('Вакансия', max_length=100)
     email = models.EmailField('Email', max_length=50)
     phone = models.CharField('Телефон', max_length=20)
     description = models.TextField('Описание', blank=True, null=True)
@@ -28,7 +26,7 @@ class ApplicationVacancy(models.Model):
                                         validate_size_file])
 
     def __str__(self):
-        return self.name
+        return self.fullname
 
     class Meta:
         verbose_name = 'Заявку на вакансию'

@@ -12,4 +12,4 @@ class VacancySerializer(serializers.ModelSerializer):
 class ApplicationVacancySerializer(serializers.ModelSerializer):
     class Meta:
         model = ApplicationVacancy
-        fields = '__all__'
+        fields = ['id', 'fullname', 'vacancy', 'email', 'phone', 'description', 'docs']
