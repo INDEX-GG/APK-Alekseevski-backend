@@ -3,8 +3,9 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 
 from apps.vacancies.serializers import VacancySerializer, ApplicationVacancySerializer
-from apps.vacancies.models import Vacancy, ApplicationVacancy
+from apps.vacancies.models import Vacancy
 from apps.vacancies.utils import Util
+
 
 class VacancyAPIView(generics.ListAPIView):
     queryset = Vacancy.objects.all().order_by('-pk')
@@ -12,7 +13,6 @@ class VacancyAPIView(generics.ListAPIView):
 
 
 class ApplicationVacancyAPIView(generics.CreateAPIView):
-    # queryset = ApplicationVacancy.objects.all()
     serializer_class = ApplicationVacancySerializer
     parser_classes = [MultiPartParser]
 

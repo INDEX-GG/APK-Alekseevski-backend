@@ -6,7 +6,7 @@ class News(models.Model):
     description = models.TextField('Краткое описание')
     text = models.TextField('Полное описание')
     address = models.TextField('Адрес', blank=True, null=True)
-    image = models.ImageField('Изображение', upload_to='images/news/')
+    image = models.ImageField('Изображение', upload_to='images/news/', default='images/no_image.jpg')
     date = models.DateField('Дата', auto_now_add=True)
 
     def __str__(self):
