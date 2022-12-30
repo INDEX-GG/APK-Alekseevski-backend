@@ -6,4 +6,4 @@ from apps.map.models import Addresses
 class AddressesSerializer(ModelSerializer):
     class Meta:
         model = Addresses
-        fields = ['id', 'lat', 'long']
+        fields = ['id', 'title', 'lat', 'long']
