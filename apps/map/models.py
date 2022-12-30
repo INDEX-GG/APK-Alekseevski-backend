@@ -3,9 +3,8 @@ from django.db import models
 
 class Addresses(models.Model):
     title = models.CharField('Адрес', max_length=255, blank=False)
-    lat = models.CharField('Ширина', max_length=255, blank=False)
-    long = models.CharField('Длина', max_length=255, blank=False)
-    geotag = models.TextField('Метка', blank=False)
+    lat = models.FloatField('Ширина')
+    long = models.FloatField('Длина')
 
     def __str__(self):
         return self.title
